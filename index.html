@@ -3,574 +3,350 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Jinmian Li's academic homepage — additive manufacturing, robotics, and embodied intelligence." />
     <title>Jinmian Li | Academic Homepage</title>
-    <meta
-      name="description"
-      content="Academic homepage of Jinmian Li. Research interests: additive manufacturing and design, robotics, embodied intelligence."
-    />
     <style>
       :root {
-        --bg: #ffffff;
-        --panel: #f7f7f8;
-        --text: #0f172a;
-        --muted: #475569;
-        --border: rgba(15, 23, 42, 0.12);
-        --link: #0b57d0;
-        --link-hover: #073f9a;
-        --chip-bg: rgba(2, 132, 199, 0.10);
-        --chip-text: #0369a1;
-        --shadow: 0 1px 0 rgba(15, 23, 42, 0.06), 0 10px 30px rgba(15, 23, 42, 0.06);
-
-        --radius: 14px;
-        --maxw: 1050px;
-        --gap: 20px;
-
-        --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
-          "Apple Color Emoji", "Segoe UI Emoji";
-        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-          "Courier New", monospace;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #0b0f18;
-          --panel: #0f1625;
-          --text: #e5e7eb;
-          --muted: #a3aab8;
-          --border: rgba(229, 231, 235, 0.14);
-          --link: #7aa7ff;
-          --link-hover: #a7c3ff;
-          --chip-bg: rgba(125, 211, 252, 0.12);
-          --chip-text: #7dd3fc;
-          --shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 18px 50px rgba(0, 0, 0, 0.45);
-        }
+        --paper: #f7f8f7;
+        --surface: #ffffff;
+        --ink: #161819;
+        --muted: #626869;
+        --line: #dfe2e1;
+        --accent: #8f3338;
+        --accent-soft: #f3e9e9;
+        --blue: #455f8c;
+        --green: #486f68;
+        --max: 1120px;
+        --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
       }
 
       * { box-sizing: border-box; }
-      html, body { height: 100%; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
-        font-family: var(--font);
-        color: var(--text);
-        background: radial-gradient(1200px 600px at 20% -10%, rgba(11, 87, 208, 0.08), transparent 55%),
-          radial-gradient(900px 500px at 95% 15%, rgba(2, 132, 199, 0.10), transparent 55%),
-          var(--bg);
-        line-height: 1.55;
+        color: var(--ink);
+        background:
+          linear-gradient(rgba(255,255,255,.28), rgba(255,255,255,.28)),
+          repeating-linear-gradient(90deg, transparent 0, transparent 63px, rgba(18,24,24,.018) 64px),
+          var(--paper);
+        font: 16px/1.72 var(--sans);
+        -webkit-font-smoothing: antialiased;
       }
 
-      a { color: var(--link); text-decoration: none; }
-      a:hover { color: var(--link-hover); text-decoration: underline; text-underline-offset: 3px; }
-      a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 6px; }
+      a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+      a:hover { color: var(--accent); }
+      img, svg { display: block; max-width: 100%; }
+      .container { width: min(calc(100% - 48px), var(--max)); margin-inline: auto; }
 
-      .wrap { max-width: var(--maxw); margin: 0 auto; padding: 36px 18px 60px; }
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(247,248,247,.88);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(14px);
+      }
+      .header-inner {
+        min-height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .brand { color: var(--ink); text-decoration: none; line-height: 1.1; }
+      .brand strong { display: block; font-family: Georgia, "Times New Roman", serif; font-size: 21px; }
+      .brand span { display: block; margin-top: 7px; color: var(--muted); font: 10px/1.1 var(--mono); letter-spacing: .16em; text-transform: uppercase; }
+      .site-nav { display: flex; gap: 8px; font: 12px/1 var(--mono); }
+      .site-nav a { padding: 11px 13px; color: #383d3e; text-decoration: none; border: 1px solid transparent; border-radius: 999px; }
+      .site-nav a:hover, .site-nav a:first-child { border-color: #d7c3c4; color: var(--accent); background: rgba(143,51,56,.035); }
 
-      .grid {
+      main { padding: 78px 0 88px; }
+      .hero {
         display: grid;
-        grid-template-columns: 330px 1fr;
-        gap: var(--gap);
+        grid-template-columns: 240px minmax(0, 1fr) 260px;
+        gap: 48px;
         align-items: start;
+        padding-bottom: 58px;
+        border-bottom: 1px solid var(--line);
       }
 
-      @media (max-width: 900px) {
-        .wrap { padding-top: 22px; }
-        .grid { grid-template-columns: 1fr; }
-      }
-
-      .card {
-        background: color-mix(in srgb, var(--panel) 92%, transparent);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-      }
-
-      .profile { padding: 22px 20px; position: sticky; top: 18px; }
-      @media (max-width: 900px) { .profile { position: static; } }
-
-      .avatar {
-        width: 84px; height: 84px; border-radius: 50%;
-        display: grid; place-items: center;
-        border: 1px solid var(--border);
-        background: linear-gradient(180deg, rgba(11, 87, 208, 0.15), rgba(2, 132, 199, 0.10));
-        font-weight: 700;
-        letter-spacing: 0.6px;
-      }
-
-      .name { margin: 14px 0 4px; font-size: 1.55rem; line-height: 1.2; }
-      .meta { margin: 0; color: var(--muted); font-size: 0.98rem; }
-      .meta + .meta { margin-top: 4px; }
-
-      .contact {
-        margin-top: 18px;
-        padding-top: 14px;
-        border-top: 1px solid var(--border);
-      }
-
-      .kv { display: grid; grid-template-columns: 68px 1fr; gap: 8px 10px; align-items: baseline; }
-      .k { color: var(--muted); font-size: 0.92rem; }
-      .v { font-family: var(--mono); font-size: 0.92rem; overflow-wrap: anywhere; }
-
-      .nav {
-        margin-top: 14px;
-        display: flex; flex-wrap: wrap;
-        gap: 8px;
-      }
-      .pill {
-        display: inline-flex; align-items: center;
-        padding: 7px 10px;
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        color: var(--muted);
-        background: color-mix(in srgb, var(--bg) 65%, transparent);
-        font-size: 0.92rem;
-      }
-      .pill:hover { text-decoration: none; color: var(--text); border-color: color-mix(in srgb, var(--border) 80%, var(--link) 20%); }
-
-      .content { padding: 18px 20px 22px; }
-
-      section { padding: 18px 2px; border-bottom: 1px dashed color-mix(in srgb, var(--border) 70%, transparent); }
-      section:last-child { border-bottom: none; }
-
-      h2 {
-        margin: 0 0 12px;
-        font-size: 1.08rem;
-        letter-spacing: 0.4px;
-      }
-      p { margin: 0 0 10px; }
-      p:last-child { margin-bottom: 0; }
-
-      .chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-      .chips li {
-        padding: 6px 10px;
-        border-radius: 999px;
-        background: var(--chip-bg);
-        color: var(--chip-text);
-        border: 1px solid color-mix(in srgb, var(--chip-text) 18%, transparent);
-        font-size: 0.92rem;
-        white-space: nowrap;
-      }
-
-      .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-      .item {
-        padding: 12px 12px;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        background: color-mix(in srgb, var(--bg) 70%, transparent);
-      }
-      .item-title { font-weight: 650; margin: 0 0 4px; }
-      .item-meta { margin: 0; color: var(--muted); font-size: 0.95rem; }
-      .item-links { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.95rem; }
-
-      .small-note {
-        margin-top: 14px;
-        color: var(--muted);
-        font-size: 0.90rem;
-      }
-
-      .edit-note {
-        margin-top: 10px;
-        padding: 10px 12px;
-        border-radius: 12px;
-        border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
-        background: color-mix(in srgb, var(--panel) 86%, transparent);
-        color: var(--muted);
-        font-size: 0.90rem;
-      }
-
-      .hidden { display: none !important; }
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
+      .portrait {
+        position: relative;
+        aspect-ratio: 4 / 5;
         overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        border: 0;
+        border: 1px solid #d5d9d8;
+        background:
+          radial-gradient(circle at 68% 25%, rgba(255,255,255,.9) 0 8%, transparent 9%),
+          linear-gradient(145deg, #d9dedc, #eef0ef 48%, #c8cfcd);
       }
+      .portrait::before, .portrait::after { content: ""; position: absolute; border: 1px solid rgba(22,24,25,.12); }
+      .portrait::before { inset: 15%; border-radius: 50%; }
+      .portrait::after { width: 76%; height: 76%; left: 12%; top: 44%; border-radius: 48% 48% 10% 10%; background: rgba(255,255,255,.22); }
+      .portrait-initials { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; font: 700 64px/1 Georgia, serif; letter-spacing: -.08em; color: #2d3434; }
+      .portrait-label { position: absolute; z-index: 3; left: 14px; right: 14px; bottom: 12px; padding-top: 8px; border-top: 1px solid rgba(22,24,25,.25); color: #42494a; font: 9px/1.4 var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+
+      .hero-copy h1 { margin: 0 0 18px; font-size: clamp(46px, 6vw, 72px); line-height: .98; letter-spacing: -.055em; font-weight: 760; }
+      .role { margin: 0 0 4px; font-size: 23px; line-height: 1.4; }
+      .affiliation { margin: 0; color: var(--blue); font-size: 20px; line-height: 1.5; }
+      .location { margin: 0; color: var(--blue); font-size: 17px; }
+      .research-line { margin: 27px 0 0; max-width: 590px; color: #596061; }
+      .research-line strong { color: var(--ink); }
+
+      .hero-aside h2 { margin: 4px 0 10px; font-size: 21px; line-height: 1.2; }
+      .interest-list { list-style: none; margin: 0; padding: 0; }
+      .interest-list li { padding: 2px 0; font-size: 17px; }
+      .contact-links { display: grid; gap: 8px; margin-top: 28px; }
+      .contact-links a, .contact-links span {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: var(--blue);
+        text-decoration: none;
+      }
+      .contact-links .disabled { color: #8b9091; cursor: default; }
+      .contact-icon { width: 21px; height: 21px; display: grid; place-items: center; flex: 0 0 auto; border: 1px solid #d5d9d8; border-radius: 50%; color: #4b5969; font: 9px/1 var(--mono); background: rgba(255,255,255,.65); }
+
+      .section { padding: 48px 0; border-bottom: 1px solid var(--line); }
+      .section:last-of-type { border-bottom: 0; }
+      .section-title { position: relative; margin: 0 0 24px; padding-bottom: 11px; font-family: Georgia, "Times New Roman", serif; font-size: 34px; line-height: 1.1; }
+      .section-title::before { content: ""; position: absolute; left: 0; bottom: -1px; width: 72px; height: 1px; background: var(--accent); }
+      .section-title::after { content: ""; position: absolute; left: 82px; right: 0; bottom: -1px; height: 1px; background: var(--line); }
+      .section p { margin: 0 0 18px; }
+      .section p:last-child { margin-bottom: 0; }
+      .about-copy { max-width: 980px; }
+      .about-copy strong { font-weight: 700; }
+
+      .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .research-card { overflow: hidden; border: 1px solid #d8dcdb; border-radius: 4px; background: rgba(255,255,255,.72); box-shadow: 0 12px 26px rgba(21,28,27,.04); }
+      .research-art { aspect-ratio: 16/10; overflow: hidden; background: #e5e9e7; }
+      .research-art svg { width: 100%; height: 100%; }
+      .research-caption { padding: 15px 16px 17px; }
+      .research-caption small { display: block; color: var(--green); font: 9px/1.2 var(--mono); letter-spacing: .15em; text-transform: uppercase; }
+      .research-caption strong { display: block; margin-top: 7px; font: 700 22px/1.15 Georgia, serif; }
+      .research-caption p { margin: 8px 0 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+      .placeholder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      .placeholder {
+        min-height: 150px;
+        padding: 24px;
+        border: 1px solid #d8dcdb;
+        border-left: 3px solid var(--accent);
+        border-radius: 4px;
+        background: rgba(255,255,255,.56);
+      }
+      .placeholder .eyebrow { color: var(--accent); font: 10px/1.3 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+      .placeholder h3 { margin: 9px 0 8px; font: 700 21px/1.25 Georgia, serif; }
+      .placeholder p { margin: 0; color: var(--muted); font-size: 14px; }
+
+      .cv-note { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px 24px; border: 1px solid #decfd0; border-left: 4px solid var(--accent); background: linear-gradient(90deg, var(--accent-soft), rgba(255,255,255,.55)); }
+      .cv-note strong { display: block; font: 700 19px/1.3 Georgia, serif; }
+      .cv-note span { display: block; margin-top: 4px; color: var(--muted); font-size: 14px; }
+      .cv-badge { flex: 0 0 auto; padding: 8px 11px; border: 1px solid #cdb8ba; border-radius: 999px; color: var(--accent); font: 10px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+
+      footer { border-top: 1px solid var(--line); padding: 30px 0 44px; color: #757b7c; font: 11px/1.6 var(--mono); }
+      .footer-inner { display: flex; justify-content: space-between; gap: 24px; }
+
+      @media (max-width: 960px) {
+        .hero { grid-template-columns: 210px 1fr; gap: 34px; }
+        .hero-aside { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding-top: 8px; }
+        .contact-links { margin-top: 0; }
+      }
+      @media (max-width: 720px) {
+        .container { width: min(calc(100% - 32px), var(--max)); }
+        .header-inner { min-height: 68px; }
+        .site-nav a:not(:first-child):not(:last-child) { display: none; }
+        main { padding-top: 42px; }
+        .hero { grid-template-columns: 1fr; gap: 28px; }
+        .portrait { width: min(240px, 70vw); }
+        .hero-copy h1 { font-size: clamp(44px, 15vw, 64px); }
+        .hero-aside { grid-template-columns: 1fr; }
+        .research-grid, .placeholder-grid { grid-template-columns: 1fr; }
+        .cv-note, .footer-inner { align-items: flex-start; flex-direction: column; }
+      }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     </style>
   </head>
   <body>
-    <!--
-      ===========================
-      How to edit this single file
-      ===========================
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#home" aria-label="Jinmian Li home">
+          <strong>Jinmian Li</strong>
+          <span>SZPU · Shenzhen</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#cv">CV</a>
+        </nav>
+      </div>
+    </header>
 
-      Option A (structured, recommended):
-        1) Find the JSON block: <script id="profile-data" type="application/json"> ... </script>
-        2) Update fields like name/title/affiliation/about/publications/projects/news
-        3) Refresh the page
-
-      Option B (quick manual edits):
-        1) Find the "EDIT HERE (STATIC)" blocks under each section
-        2) Directly edit the HTML text
-
-      If you want to disable JSON rendering and ONLY use static HTML:
-        Set FORCE_STATIC to true in the script below.
-    -->
-
-    <div class="wrap">
-      <div class="grid">
-        <aside class="card profile" aria-label="Profile">
-          <div class="avatar" id="avatar" aria-label="Avatar">JL</div>
-          <h1 class="name" id="name">Jinmian Li</h1>
-          <p class="meta" id="title">Research Assistant / Independent Researcher</p>
-          <p class="meta" id="affiliation">Shenzhen Polytechnic University</p>
-
-          <div class="contact" aria-label="Contact">
-            <div class="kv">
-              <div class="k">Email</div>
-              <div class="v"><a id="email" href="mailto:240010076@mail.szpu.edu.cn">240010076@mail.szpu.edu.cn</a></div>
-            </div>
-            <div class="small-note">This page is a single editable HTML file.</div>
+    <main id="home">
+      <div class="container">
+        <section class="hero" aria-labelledby="page-title">
+          <!-- CV UPDATE: replace this block with <img src="assets/profile.jpg" alt="Jinmian Li"> when a portrait is available. -->
+          <div class="portrait" aria-label="Portrait placeholder for Jinmian Li">
+            <div class="portrait-initials">JL</div>
+            <div class="portrait-label">Portrait · to be added</div>
           </div>
 
-          <nav class="nav" aria-label="Page navigation">
-            <a class="pill" href="#about">About</a>
-            <a class="pill" href="#interests">Interests</a>
-            <a class="pill" href="#publications">Publications</a>
-            <a class="pill" href="#projects">Projects</a>
-            <a class="pill" href="#news">News</a>
-          </nav>
-        </aside>
+          <div class="hero-copy">
+            <h1 id="page-title">Jinmian Li</h1>
+            <p class="role">Research Assistant / Independent Researcher</p>
+            <p class="affiliation">Shenzhen Polytechnic University</p>
+            <p class="location">Shenzhen, China</p>
+            <p class="research-line">
+              I work at the intersection of <strong>additive manufacturing</strong>,
+              <strong>robotics</strong>, and <strong>embodied intelligence</strong>, with an interest in
+              intelligent systems that connect design, fabrication, and physical interaction.
+            </p>
+          </div>
 
-        <main class="card content" id="main">
-          <section id="about-section">
-            <h2 id="about">About</h2>
-
-            <div id="about-json"></div>
-
-            <!-- EDIT HERE (STATIC): About -->
-            <div id="about-static" class="edit-note">
-              I am a Research Assistant / Independent Researcher at Shenzhen Polytechnic University.
-              My research interests lie at the intersection of additive manufacturing and design,
-              robotics, and embodied intelligence. I am particularly interested in integrating
-              design-for-manufacturing with intelligent robotic systems to enable more adaptive,
-              functional, and human-centered fabrication and interaction.
+          <aside class="hero-aside" aria-label="Research interests and links">
+            <div>
+              <h2>Research Interests</h2>
+              <ul class="interest-list">
+                <li>Additive Manufacturing</li>
+                <li>Design for Manufacturing</li>
+                <li>Robotics</li>
+                <li>Embodied Intelligence</li>
+                <li>Human-Centered Systems</li>
+              </ul>
             </div>
-          </section>
-
-          <section id="interests-section">
-            <h2 id="interests">Research Interests</h2>
-
-            <ul class="chips" id="interests-json"></ul>
-
-            <!-- EDIT HERE (STATIC): Interests -->
-            <div id="interests-static" class="edit-note">
-              Additive Manufacturing & Design; Robotics; Embodied Intelligence
+            <div class="contact-links">
+              <a href="mailto:240010076@mail.szpu.edu.cn"><span class="contact-icon">✉</span>Email</a>
+              <a href="https://github.com/jinmianlee" target="_blank" rel="noreferrer"><span class="contact-icon">GH</span>GitHub</a>
+              <span class="disabled"><span class="contact-icon">GS</span>Google Scholar · later</span>
+              <span class="disabled"><span class="contact-icon">CV</span>Curriculum Vitae · later</span>
             </div>
-          </section>
+          </aside>
+        </section>
 
-          <section id="publications-section">
-            <h2 id="publications">Selected Publications</h2>
-            <ol class="list" id="publications-json" aria-label="Publications list"></ol>
+        <section class="section" id="about">
+          <h2 class="section-title">About</h2>
+          <div class="about-copy">
+            <p>
+              Hi, my name is <strong>Jinmian Li</strong>. I am a Research Assistant / Independent Researcher at
+              Shenzhen Polytechnic University. My research explores how intelligent design and robotic systems
+              can make fabrication more adaptive, functional, and responsive to people and the physical world.
+            </p>
+            <p>
+              I am particularly interested in integrating <strong>design-for-manufacturing</strong> with
+              <strong>robotic perception and action</strong>, bridging digital models, manufacturing processes,
+              and embodied interaction. A fuller biography, education history, awards, and experience will be
+              added from my curriculum vitae.
+            </p>
+          </div>
+        </section>
 
-            <!-- EDIT HERE (STATIC): Publications -->
-            <div id="publications-static" class="edit-note">
-              Replace this block with your publication list, or edit the JSON to render it automatically.
+        <section class="section" id="research">
+          <h2 class="section-title">Research Glimpses</h2>
+          <div class="research-grid">
+            <article class="research-card">
+              <div class="research-art" aria-hidden="true">
+                <svg viewBox="0 0 480 300" role="img">
+                  <defs><linearGradient id="am-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9e1df"/><stop offset="1" stop-color="#aebdb9"/></linearGradient></defs>
+                  <rect width="480" height="300" fill="url(#am-bg)"/>
+                  <g fill="none" stroke="#4c6862" stroke-width="3" opacity=".72">
+                    <path d="M80 230h320M105 205h270M130 180h220M155 155h170M180 130h120M205 105h70"/>
+                    <path d="M80 230l25-25 25-25 25-25 25-25 25-25 35-35M400 230l-25-25-25-25-25-25-25-25-25-25-35-35"/>
+                  </g>
+                  <rect x="208" y="37" width="64" height="39" rx="4" fill="#263b38"/>
+                  <path d="M231 76h18l-5 18h-8z" fill="#8f3338"/>
+                  <circle cx="240" cy="100" r="5" fill="#8f3338"/>
+                </svg>
+              </div>
+              <div class="research-caption">
+                <small>Fabrication</small>
+                <strong>Additive Manufacturing</strong>
+                <p>Designing intelligent and adaptable workflows for advanced fabrication.</p>
+              </div>
+            </article>
+
+            <article class="research-card">
+              <div class="research-art" aria-hidden="true">
+                <svg viewBox="0 0 480 300" role="img">
+                  <rect width="480" height="300" fill="#e7e1dc"/>
+                  <g stroke="#353c40" stroke-width="18" stroke-linecap="round" fill="none">
+                    <path d="M120 238l62-73 58 20 55-77"/>
+                    <path d="M295 108l52-45"/>
+                  </g>
+                  <g fill="#8f3338" stroke="#f7f8f7" stroke-width="5">
+                    <circle cx="120" cy="238" r="25"/><circle cx="182" cy="165" r="24"/><circle cx="240" cy="185" r="23"/><circle cx="295" cy="108" r="22"/>
+                  </g>
+                  <path d="M347 63l41 15-23 34-30-15z" fill="#455f8c"/>
+                  <g stroke="#8f3338" stroke-width="2" opacity=".45"><circle cx="388" cy="78" r="32" fill="none"/><circle cx="388" cy="78" r="51" fill="none"/></g>
+                </svg>
+              </div>
+              <div class="research-caption">
+                <small>Physical Systems</small>
+                <strong>Robotics</strong>
+                <p>Connecting perception, planning, and action in real-world robotic systems.</p>
+              </div>
+            </article>
+
+            <article class="research-card">
+              <div class="research-art" aria-hidden="true">
+                <svg viewBox="0 0 480 300" role="img">
+                  <rect width="480" height="300" fill="#dce2e7"/>
+                  <g stroke="#455f8c" stroke-width="2" opacity=".42">
+                    <path d="M0 250L240 55l240 195M0 95l240 160L480 95M90 0l150 255L390 0"/>
+                  </g>
+                  <g fill="#f7f8f7" stroke="#455f8c" stroke-width="4">
+                    <circle cx="240" cy="88" r="36"/><rect x="182" y="128" width="116" height="96" rx="31"/>
+                  </g>
+                  <g fill="#8f3338"><circle cx="226" cy="84" r="5"/><circle cx="254" cy="84" r="5"/><rect x="214" y="164" width="52" height="8" rx="4"/></g>
+                  <g fill="#486f68"><circle cx="84" cy="221" r="8"/><circle cx="386" cy="221" r="8"/><circle cx="240" cy="255" r="8"/></g>
+                </svg>
+              </div>
+              <div class="research-caption">
+                <small>Intelligence</small>
+                <strong>Embodied Intelligence</strong>
+                <p>Building agents that learn, reason, and interact through physical embodiment.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- CV UPDATE: replace these placeholders with verified publications and projects from the CV. -->
+        <section class="section" id="publications">
+          <h2 class="section-title">Publications &amp; Projects</h2>
+          <div class="placeholder-grid">
+            <article class="placeholder">
+              <div class="eyebrow">Selected Publications</div>
+              <h3>Publication list coming next</h3>
+              <p>Titles, authors, venues, years, DOI/PDF links, and code links will be added from the CV.</p>
+            </article>
+            <article class="placeholder">
+              <div class="eyebrow">Research Projects</div>
+              <h3>Project portfolio coming next</h3>
+              <p>Project descriptions, responsibilities, outcomes, and visual materials will be added from the CV.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="cv">
+          <h2 class="section-title">Curriculum Vitae</h2>
+          <div class="cv-note">
+            <div>
+              <strong>CV integration is prepared.</strong>
+              <span>Upload the CV and this section can become a download link, while its verified content populates the full site.</span>
             </div>
-          </section>
-
-          <section id="projects-section">
-            <h2 id="projects">Projects</h2>
-            <ul class="list" id="projects-json" aria-label="Projects list"></ul>
-
-            <!-- EDIT HERE (STATIC): Projects -->
-            <div id="projects-static" class="edit-note">
-              Add your projects here, or edit the JSON projects array.
-            </div>
-          </section>
-
-          <section id="news-section">
-            <h2 id="news">News</h2>
-            <ul class="list" id="news-json" aria-label="News list"></ul>
-
-            <!-- EDIT HERE (STATIC): News -->
-            <div id="news-static" class="edit-note">
-              Add your updates here (e.g., paper accepted, talk, award), or edit the JSON news array.
-            </div>
-          </section>
-
-          <footer class="small-note" id="footer">
-            <span id="last-updated">Last updated: </span>
-          </footer>
-        </main>
+            <div class="cv-badge">Awaiting CV</div>
+          </div>
+        </section>
       </div>
-    </div>
+    </main>
 
-    <script id="profile-data" type="application/json">
-      {
-        "settings": {
-          "preferJsonRender": true
-        },
-        "name": "Jinmian Li",
-        "title": "Research Assistant / Independent Researcher",
-        "affiliation": "Shenzhen Polytechnic University",
-        "email": "240010076@mail.szpu.edu.cn",
-        "about": "I am a Research Assistant / Independent Researcher at Shenzhen Polytechnic University. My research interests lie at the intersection of additive manufacturing and design, robotics, and embodied intelligence. I am particularly interested in integrating design-for-manufacturing with intelligent robotic systems to enable more adaptive, functional, and human-centered fabrication and interaction.",
-        "interests": ["Additive Manufacturing & Design", "Robotics", "Embodied Intelligence"],
-        "publications": [
-          {
-            "title": "Paper Title (Example)",
-            "authors": "J. Li, A. Collaborator, B. Advisor",
-            "venue": "Conference / Journal (Example)",
-            "year": 2026,
-            "links": { "pdf": "", "doi": "", "code": "" }
-          }
-        ],
-        "projects": [
-          {
-            "title": "Project Name (Example)",
-            "desc": "One sentence description of what you built and why it matters.",
-            "tags": ["AM", "Robotics"],
-            "links": { "demo": "", "code": "" }
-          }
-        ],
-        "news": [
-          { "date": "2026-07", "text": "This homepage template is ready. Replace example items with your content.", "link": "" }
-        ],
-        "lastUpdated": ""
-      }
-    </script>
-
-    <script>
-      // Set to true if you ONLY want to use the static HTML blocks (no JSON rendering).
-      const FORCE_STATIC = false;
-
-      function safeText(value) {
-        if (value === null || value === undefined) return "";
-        return String(value);
-      }
-
-      function el(id) {
-        return document.getElementById(id);
-      }
-
-      function hideIfEmpty(sectionId, isEmpty) {
-        const section = el(sectionId);
-        if (!section) return;
-        section.classList.toggle("hidden", Boolean(isEmpty));
-      }
-
-      function renderAbout(target, aboutText) {
-        target.innerHTML = "";
-        const p = document.createElement("p");
-        p.textContent = safeText(aboutText);
-        target.appendChild(p);
-      }
-
-      function renderChips(target, items) {
-        target.innerHTML = "";
-        (items || []).forEach((it) => {
-          const li = document.createElement("li");
-          li.textContent = safeText(it);
-          target.appendChild(li);
-        });
-      }
-
-      function linkIf(url, label) {
-        const u = safeText(url).trim();
-        if (!u) return null;
-        const a = document.createElement("a");
-        a.href = u;
-        a.target = "_blank";
-        a.rel = "noreferrer";
-        a.textContent = label;
-        return a;
-      }
-
-      function renderPublications(target, pubs) {
-        target.innerHTML = "";
-        (pubs || []).forEach((p) => {
-          const li = document.createElement("li");
-          li.className = "item";
-
-          const title = document.createElement("p");
-          title.className = "item-title";
-          title.textContent = safeText(p.title);
-
-          const meta = document.createElement("p");
-          meta.className = "item-meta";
-          const authors = safeText(p.authors);
-          const venue = safeText(p.venue);
-          const year = safeText(p.year);
-          meta.textContent = [authors, [venue, year].filter(Boolean).join(" · ")].filter(Boolean).join(" — ");
-
-          const links = document.createElement("div");
-          links.className = "item-links";
-          const pdf = linkIf(p?.links?.pdf, "PDF");
-          const doi = linkIf(p?.links?.doi, "DOI");
-          const code = linkIf(p?.links?.code, "Code");
-          [pdf, doi, code].filter(Boolean).forEach((a) => links.appendChild(a));
-
-          li.appendChild(title);
-          li.appendChild(meta);
-          if (links.childNodes.length) li.appendChild(links);
-          target.appendChild(li);
-        });
-      }
-
-      function renderProjects(target, projects) {
-        target.innerHTML = "";
-        (projects || []).forEach((p) => {
-          const li = document.createElement("li");
-          li.className = "item";
-
-          const title = document.createElement("p");
-          title.className = "item-title";
-          title.textContent = safeText(p.title);
-
-          const desc = document.createElement("p");
-          desc.className = "item-meta";
-          desc.textContent = safeText(p.desc);
-
-          const links = document.createElement("div");
-          links.className = "item-links";
-          const demo = linkIf(p?.links?.demo, "Demo");
-          const code = linkIf(p?.links?.code, "Code");
-          [demo, code].filter(Boolean).forEach((a) => links.appendChild(a));
-
-          li.appendChild(title);
-          li.appendChild(desc);
-
-          if (Array.isArray(p.tags) && p.tags.length) {
-            const tagWrap = document.createElement("ul");
-            tagWrap.className = "chips";
-            p.tags.forEach((t) => {
-              const chip = document.createElement("li");
-              chip.textContent = safeText(t);
-              tagWrap.appendChild(chip);
-            });
-            li.appendChild(tagWrap);
-          }
-
-          if (links.childNodes.length) li.appendChild(links);
-          target.appendChild(li);
-        });
-      }
-
-      function renderNews(target, items) {
-        target.innerHTML = "";
-        (items || []).forEach((n) => {
-          const li = document.createElement("li");
-          li.className = "item";
-
-          const title = document.createElement("p");
-          title.className = "item-title";
-          const date = safeText(n.date);
-          title.textContent = date ? `${date}` : "Update";
-
-          const text = document.createElement("p");
-          text.className = "item-meta";
-          text.textContent = safeText(n.text);
-
-          li.appendChild(title);
-          li.appendChild(text);
-
-          const maybe = linkIf(n.link, "Link");
-          if (maybe) {
-            const links = document.createElement("div");
-            links.className = "item-links";
-            links.appendChild(maybe);
-            li.appendChild(links);
-          }
-
-          target.appendChild(li);
-        });
-      }
-
-      function initialsFromName(name) {
-        const parts = safeText(name).trim().split(/\s+/).filter(Boolean);
-        if (!parts.length) return "NA";
-        if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
-        return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-      }
-
-      function main() {
-        let data = null;
-        try {
-          data = JSON.parse(el("profile-data")?.textContent || "null");
-        } catch (e) {
-          data = null;
-        }
-
-        const preferJson = Boolean(data?.settings?.preferJsonRender) && !FORCE_STATIC;
-
-        // Basic profile
-        if (preferJson && data) {
-          el("name").textContent = safeText(data.name) || "Your Name";
-          el("title").textContent = safeText(data.title);
-          el("affiliation").textContent = safeText(data.affiliation);
-
-          const email = safeText(data.email).trim();
-          if (email) {
-            el("email").textContent = email;
-            el("email").setAttribute("href", `mailto:${email}`);
-          }
-
-          el("avatar").textContent = initialsFromName(data.name);
-          document.title = `${safeText(data.name) || "Academic Homepage"} | Academic Homepage`;
-        }
-
-        // About
-        if (preferJson && safeText(data?.about).trim()) {
-          renderAbout(el("about-json"), data.about);
-          el("about-static").classList.add("hidden");
-        } else {
-          el("about-json").innerHTML = "";
-          el("about-static").classList.remove("hidden");
-        }
-
-        // Interests
-        const interests = Array.isArray(data?.interests) ? data.interests : [];
-        if (preferJson && interests.length) {
-          renderChips(el("interests-json"), interests);
-          el("interests-static").classList.add("hidden");
-        } else {
-          el("interests-json").innerHTML = "";
-          el("interests-static").classList.remove("hidden");
-        }
-
-        // Publications
-        const pubs = Array.isArray(data?.publications) ? data.publications : [];
-        if (preferJson && pubs.length) {
-          renderPublications(el("publications-json"), pubs);
-          el("publications-static").classList.add("hidden");
-        } else {
-          el("publications-json").innerHTML = "";
-          el("publications-static").classList.remove("hidden");
-        }
-        hideIfEmpty("publications-section", !(preferJson && pubs.length) && !safeText(el("publications-static")?.textContent).trim());
-
-        // Projects
-        const projects = Array.isArray(data?.projects) ? data.projects : [];
-        if (preferJson && projects.length) {
-          renderProjects(el("projects-json"), projects);
-          el("projects-static").classList.add("hidden");
-        } else {
-          el("projects-json").innerHTML = "";
-          el("projects-static").classList.remove("hidden");
-        }
-        hideIfEmpty("projects-section", !(preferJson && projects.length) && !safeText(el("projects-static")?.textContent).trim());
-
-        // News
-        const news = Array.isArray(data?.news) ? data.news : [];
-        if (preferJson && news.length) {
-          renderNews(el("news-json"), news);
-          el("news-static").classList.add("hidden");
-        } else {
-          el("news-json").innerHTML = "";
-          el("news-static").classList.remove("hidden");
-        }
-        hideIfEmpty("news-section", !(preferJson && news.length) && !safeText(el("news-static")?.textContent).trim());
-
-        // Last updated
-        const updated = safeText(data?.lastUpdated).trim() || new Date().toISOString().slice(0, 10);
-        el("last-updated").textContent = `Last updated: ${updated}`;
-      }
-
-      main();
-    </script>
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year">2026</span> Jinmian Li.</span>
+        <span>Academic homepage · Last updated August 2026</span>
+      </div>
+    </footer>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
   </body>
 </html>
-
