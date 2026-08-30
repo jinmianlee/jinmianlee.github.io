@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Jinmian Li | Academic Homepage</title>
+    <meta
+      name="description"
+      content="Academic homepage of Jinmian Li. Research interests: additive manufacturing and design, robotics, embodied intelligence."
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --panel: #f7f7f8;
+        --text: #0f172a;
+        --muted: #475569;
+        --border: rgba(15, 23, 42, 0.12);
+        --link: #0b57d0;
+        --link-hover: #073f9a;
+        --chip-bg: rgba(2, 132, 199, 0.10);
+        --chip-text: #0369a1;
+        --shadow: 0 1px 0 rgba(15, 23, 42, 0.06), 0 10px 30px rgba(15, 23, 42, 0.06);
+
+        --radius: 14px;
+        --maxw: 1050px;
+        --gap: 20px;
+
+        --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+          "Apple Color Emoji", "Segoe UI Emoji";
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0f18;
+          --panel: #0f1625;
+          --text: #e5e7eb;
+          --muted: #a3aab8;
+          --border: rgba(229, 231, 235, 0.14);
+          --link: #7aa7ff;
+          --link-hover: #a7c3ff;
+          --chip-bg: rgba(125, 211, 252, 0.12);
+          --chip-text: #7dd3fc;
+          --shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 18px 50px rgba(0, 0, 0, 0.45);
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: var(--font);
+        color: var(--text);
+        background: radial-gradient(1200px 600px at 20% -10%, rgba(11, 87, 208, 0.08), transparent 55%),
+          radial-gradient(900px 500px at 95% 15%, rgba(2, 132, 199, 0.10), transparent 55%),
+          var(--bg);
+        line-height: 1.55;
+      }
+
+      a { color: var(--link); text-decoration: none; }
+      a:hover { color: var(--link-hover); text-decoration: underline; text-underline-offset: 3px; }
+      a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 6px; }
+
+      .wrap { max-width: var(--maxw); margin: 0 auto; padding: 36px 18px 60px; }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 330px 1fr;
+        gap: var(--gap);
+        align-items: start;
+      }
+
+      @media (max-width: 900px) {
+        .wrap { padding-top: 22px; }
+        .grid { grid-template-columns: 1fr; }
+      }
+
+      .card {
+        background: color-mix(in srgb, var(--panel) 92%, transparent);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .profile { padding: 22px 20px; position: sticky; top: 18px; }
+      @media (max-width: 900px) { .profile { position: static; } }
+
+      .avatar {
+        width: 84px; height: 84px; border-radius: 50%;
+        display: grid; place-items: center;
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, rgba(11, 87, 208, 0.15), rgba(2, 132, 199, 0.10));
+        font-weight: 700;
+        letter-spacing: 0.6px;
+      }
+
+      .name { margin: 14px 0 4px; font-size: 1.55rem; line-height: 1.2; }
+      .meta { margin: 0; color: var(--muted); font-size: 0.98rem; }
+      .meta + .meta { margin-top: 4px; }
+
+      .contact {
+        margin-top: 18px;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+      }
+
+      .kv { display: grid; grid-template-columns: 68px 1fr; gap: 8px 10px; align-items: baseline; }
+      .k { color: var(--muted); font-size: 0.92rem; }
+      .v { font-family: var(--mono); font-size: 0.92rem; overflow-wrap: anywhere; }
+
+      .nav {
+        margin-top: 14px;
+        display: flex; flex-wrap: wrap;
+        gap: 8px;
+      }
+      .pill {
+        display: inline-flex; align-items: center;
+        padding: 7px 10px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: var(--muted);
+        background: color-mix(in srgb, var(--bg) 65%, transparent);
+        font-size: 0.92rem;
+      }
+      .pill:hover { text-decoration: none; color: var(--text); border-color: color-mix(in srgb, var(--border) 80%, var(--link) 20%); }
+
+      .content { padding: 18px 20px 22px; }
+
+      section { padding: 18px 2px; border-bottom: 1px dashed color-mix(in srgb, var(--border) 70%, transparent); }
+      section:last-child { border-bottom: none; }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: 1.08rem;
+        letter-spacing: 0.4px;
+      }
+      p { margin: 0 0 10px; }
+      p:last-child { margin-bottom: 0; }
+
+      .chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+      .chips li {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--chip-bg);
+        color: var(--chip-text);
+        border: 1px solid color-mix(in srgb, var(--chip-text) 18%, transparent);
+        font-size: 0.92rem;
+        white-space: nowrap;
+      }
+
+      .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+      .item {
+        padding: 12px 12px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: color-mix(in srgb, var(--bg) 70%, transparent);
+      }
+      .item-title { font-weight: 650; margin: 0 0 4px; }
+      .item-meta { margin: 0; color: var(--muted); font-size: 0.95rem; }
+      .item-links { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.95rem; }
+
+      .small-note {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 0.90rem;
+      }
+
+      .edit-note {
+        margin-top: 10px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+        background: color-mix(in srgb, var(--panel) 86%, transparent);
+        color: var(--muted);
+        font-size: 0.90rem;
+      }
+
+      .hidden { display: none !important; }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      ===========================
+      How to edit this single file
+      ===========================
+
+      Option A (structured, recommended):
+        1) Find the JSON block: <script id="profile-data" type="application/json"> ... </script>
+        2) Update fields like name/title/affiliation/about/publications/projects/news
+        3) Refresh the page
+
+      Option B (quick manual edits):
+        1) Find the "EDIT HERE (STATIC)" blocks under each section
+        2) Directly edit the HTML text
+
+      If you want to disable JSON rendering and ONLY use static HTML:
+        Set FORCE_STATIC to true in the script below.
+    -->
+
+    <div class="wrap">
+      <div class="grid">
+        <aside class="card profile" aria-label="Profile">
+          <div class="avatar" id="avatar" aria-label="Avatar">JL</div>
+          <h1 class="name" id="name">Jinmian Li</h1>
+          <p class="meta" id="title">Research Assistant / Independent Researcher</p>
+          <p class="meta" id="affiliation">Shenzhen Polytechnic University</p>
+
+          <div class="contact" aria-label="Contact">
+            <div class="kv">
+              <div class="k">Email</div>
+              <div class="v"><a id="email" href="mailto:240010076@mail.szpu.edu.cn">240010076@mail.szpu.edu.cn</a></div>
+            </div>
+            <div class="small-note">This page is a single editable HTML file.</div>
+          </div>
+
+          <nav class="nav" aria-label="Page navigation">
+            <a class="pill" href="#about">About</a>
+            <a class="pill" href="#interests">Interests</a>
+            <a class="pill" href="#publications">Publications</a>
+            <a class="pill" href="#projects">Projects</a>
+            <a class="pill" href="#news">News</a>
+          </nav>
+        </aside>
+
+        <main class="card content" id="main">
+          <section id="about-section">
+            <h2 id="about">About</h2>
+
+            <div id="about-json"></div>
+
+            <!-- EDIT HERE (STATIC): About -->
+            <div id="about-static" class="edit-note">
+              I am a Research Assistant / Independent Researcher at Shenzhen Polytechnic University.
+              My research interests lie at the intersection of additive manufacturing and design,
+              robotics, and embodied intelligence. I am particularly interested in integrating
+              design-for-manufacturing with intelligent robotic systems to enable more adaptive,
+              functional, and human-centered fabrication and interaction.
+            </div>
+          </section>
+
+          <section id="interests-section">
+            <h2 id="interests">Research Interests</h2>
+
+            <ul class="chips" id="interests-json"></ul>
+
+            <!-- EDIT HERE (STATIC): Interests -->
+            <div id="interests-static" class="edit-note">
+              Additive Manufacturing & Design; Robotics; Embodied Intelligence
+            </div>
+          </section>
+
+          <section id="publications-section">
+            <h2 id="publications">Selected Publications</h2>
+            <ol class="list" id="publications-json" aria-label="Publications list"></ol>
+
+            <!-- EDIT HERE (STATIC): Publications -->
+            <div id="publications-static" class="edit-note">
+              Replace this block with your publication list, or edit the JSON to render it automatically.
+            </div>
+          </section>
+
+          <section id="projects-section">
+            <h2 id="projects">Projects</h2>
+            <ul class="list" id="projects-json" aria-label="Projects list"></ul>
+
+            <!-- EDIT HERE (STATIC): Projects -->
+            <div id="projects-static" class="edit-note">
+              Add your projects here, or edit the JSON projects array.
+            </div>
+          </section>
+
+          <section id="news-section">
+            <h2 id="news">News</h2>
+            <ul class="list" id="news-json" aria-label="News list"></ul>
+
+            <!-- EDIT HERE (STATIC): News -->
+            <div id="news-static" class="edit-note">
+              Add your updates here (e.g., paper accepted, talk, award), or edit the JSON news array.
+            </div>
+          </section>
+
+          <footer class="small-note" id="footer">
+            <span id="last-updated">Last updated: </span>
+          </footer>
+        </main>
+      </div>
+    </div>
+
+    <script id="profile-data" type="application/json">
+      {
+        "settings": {
+          "preferJsonRender": true
+        },
+        "name": "Jinmian Li",
+        "title": "Research Assistant / Independent Researcher",
+        "affiliation": "Shenzhen Polytechnic University",
+        "email": "240010076@mail.szpu.edu.cn",
+        "about": "I am a Research Assistant / Independent Researcher at Shenzhen Polytechnic University. My research interests lie at the intersection of additive manufacturing and design, robotics, and embodied intelligence. I am particularly interested in integrating design-for-manufacturing with intelligent robotic systems to enable more adaptive, functional, and human-centered fabrication and interaction.",
+        "interests": ["Additive Manufacturing & Design", "Robotics", "Embodied Intelligence"],
+        "publications": [
+          {
+            "title": "Paper Title (Example)",
+            "authors": "J. Li, A. Collaborator, B. Advisor",
+            "venue": "Conference / Journal (Example)",
+            "year": 2026,
+            "links": { "pdf": "", "doi": "", "code": "" }
+          }
+        ],
+        "projects": [
+          {
+            "title": "Project Name (Example)",
+            "desc": "One sentence description of what you built and why it matters.",
+            "tags": ["AM", "Robotics"],
+            "links": { "demo": "", "code": "" }
+          }
+        ],
+        "news": [
+          { "date": "2026-07", "text": "This homepage template is ready. Replace example items with your content.", "link": "" }
+        ],
+        "lastUpdated": ""
+      }
+    </script>
+
+    <script>
+      // Set to true if you ONLY want to use the static HTML blocks (no JSON rendering).
+      const FORCE_STATIC = false;
+
+      function safeText(value) {
+        if (value === null || value === undefined) return "";
+        return String(value);
+      }
+
+      function el(id) {
+        return document.getElementById(id);
+      }
+
+      function hideIfEmpty(sectionId, isEmpty) {
+        const section = el(sectionId);
+        if (!section) return;
+        section.classList.toggle("hidden", Boolean(isEmpty));
+      }
+
+      function renderAbout(target, aboutText) {
+        target.innerHTML = "";
+        const p = document.createElement("p");
+        p.textContent = safeText(aboutText);
+        target.appendChild(p);
+      }
+
+      function renderChips(target, items) {
+        target.innerHTML = "";
+        (items || []).forEach((it) => {
+          const li = document.createElement("li");
+          li.textContent = safeText(it);
+          target.appendChild(li);
+        });
+      }
+
+      function linkIf(url, label) {
+        const u = safeText(url).trim();
+        if (!u) return null;
+        const a = document.createElement("a");
+        a.href = u;
+        a.target = "_blank";
+        a.rel = "noreferrer";
+        a.textContent = label;
+        return a;
+      }
+
+      function renderPublications(target, pubs) {
+        target.innerHTML = "";
+        (pubs || []).forEach((p) => {
+          const li = document.createElement("li");
+          li.className = "item";
+
+          const title = document.createElement("p");
+          title.className = "item-title";
+          title.textContent = safeText(p.title);
+
+          const meta = document.createElement("p");
+          meta.className = "item-meta";
+          const authors = safeText(p.authors);
+          const venue = safeText(p.venue);
+          const year = safeText(p.year);
+          meta.textContent = [authors, [venue, year].filter(Boolean).join(" · ")].filter(Boolean).join(" — ");
+
+          const links = document.createElement("div");
+          links.className = "item-links";
+          const pdf = linkIf(p?.links?.pdf, "PDF");
+          const doi = linkIf(p?.links?.doi, "DOI");
+          const code = linkIf(p?.links?.code, "Code");
+          [pdf, doi, code].filter(Boolean).forEach((a) => links.appendChild(a));
+
+          li.appendChild(title);
+          li.appendChild(meta);
+          if (links.childNodes.length) li.appendChild(links);
+          target.appendChild(li);
+        });
+      }
+
+      function renderProjects(target, projects) {
+        target.innerHTML = "";
+        (projects || []).forEach((p) => {
+          const li = document.createElement("li");
+          li.className = "item";
+
+          const title = document.createElement("p");
+          title.className = "item-title";
+          title.textContent = safeText(p.title);
+
+          const desc = document.createElement("p");
+          desc.className = "item-meta";
+          desc.textContent = safeText(p.desc);
+
+          const links = document.createElement("div");
+          links.className = "item-links";
+          const demo = linkIf(p?.links?.demo, "Demo");
+          const code = linkIf(p?.links?.code, "Code");
+          [demo, code].filter(Boolean).forEach((a) => links.appendChild(a));
+
+          li.appendChild(title);
+          li.appendChild(desc);
+
+          if (Array.isArray(p.tags) && p.tags.length) {
+            const tagWrap = document.createElement("ul");
+            tagWrap.className = "chips";
+            p.tags.forEach((t) => {
+              const chip = document.createElement("li");
+              chip.textContent = safeText(t);
+              tagWrap.appendChild(chip);
+            });
+            li.appendChild(tagWrap);
+          }
+
+          if (links.childNodes.length) li.appendChild(links);
+          target.appendChild(li);
+        });
+      }
+
+      function renderNews(target, items) {
+        target.innerHTML = "";
+        (items || []).forEach((n) => {
+          const li = document.createElement("li");
+          li.className = "item";
+
+          const title = document.createElement("p");
+          title.className = "item-title";
+          const date = safeText(n.date);
+          title.textContent = date ? `${date}` : "Update";
+
+          const text = document.createElement("p");
+          text.className = "item-meta";
+          text.textContent = safeText(n.text);
+
+          li.appendChild(title);
+          li.appendChild(text);
+
+          const maybe = linkIf(n.link, "Link");
+          if (maybe) {
+            const links = document.createElement("div");
+            links.className = "item-links";
+            links.appendChild(maybe);
+            li.appendChild(links);
+          }
+
+          target.appendChild(li);
+        });
+      }
+
+      function initialsFromName(name) {
+        const parts = safeText(name).trim().split(/\s+/).filter(Boolean);
+        if (!parts.length) return "NA";
+        if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+        return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+      }
+
+      function main() {
+        let data = null;
+        try {
+          data = JSON.parse(el("profile-data")?.textContent || "null");
+        } catch (e) {
+          data = null;
+        }
+
+        const preferJson = Boolean(data?.settings?.preferJsonRender) && !FORCE_STATIC;
+
+        // Basic profile
+        if (preferJson && data) {
+          el("name").textContent = safeText(data.name) || "Your Name";
+          el("title").textContent = safeText(data.title);
+          el("affiliation").textContent = safeText(data.affiliation);
+
+          const email = safeText(data.email).trim();
+          if (email) {
+            el("email").textContent = email;
+            el("email").setAttribute("href", `mailto:${email}`);
+          }
+
+          el("avatar").textContent = initialsFromName(data.name);
+          document.title = `${safeText(data.name) || "Academic Homepage"} | Academic Homepage`;
+        }
+
+        // About
+        if (preferJson && safeText(data?.about).trim()) {
+          renderAbout(el("about-json"), data.about);
+          el("about-static").classList.add("hidden");
+        } else {
+          el("about-json").innerHTML = "";
+          el("about-static").classList.remove("hidden");
+        }
+
+        // Interests
+        const interests = Array.isArray(data?.interests) ? data.interests : [];
+        if (preferJson && interests.length) {
+          renderChips(el("interests-json"), interests);
+          el("interests-static").classList.add("hidden");
+        } else {
+          el("interests-json").innerHTML = "";
+          el("interests-static").classList.remove("hidden");
+        }
+
+        // Publications
+        const pubs = Array.isArray(data?.publications) ? data.publications : [];
+        if (preferJson && pubs.length) {
+          renderPublications(el("publications-json"), pubs);
+          el("publications-static").classList.add("hidden");
+        } else {
+          el("publications-json").innerHTML = "";
+          el("publications-static").classList.remove("hidden");
+        }
+        hideIfEmpty("publications-section", !(preferJson && pubs.length) && !safeText(el("publications-static")?.textContent).trim());
+
+        // Projects
+        const projects = Array.isArray(data?.projects) ? data.projects : [];
+        if (preferJson && projects.length) {
+          renderProjects(el("projects-json"), projects);
+          el("projects-static").classList.add("hidden");
+        } else {
+          el("projects-json").innerHTML = "";
+          el("projects-static").classList.remove("hidden");
+        }
+        hideIfEmpty("projects-section", !(preferJson && projects.length) && !safeText(el("projects-static")?.textContent).trim());
+
+        // News
+        const news = Array.isArray(data?.news) ? data.news : [];
+        if (preferJson && news.length) {
+          renderNews(el("news-json"), news);
+          el("news-static").classList.add("hidden");
+        } else {
+          el("news-json").innerHTML = "";
+          el("news-static").classList.remove("hidden");
+        }
+        hideIfEmpty("news-section", !(preferJson && news.length) && !safeText(el("news-static")?.textContent).trim());
+
+        // Last updated
+        const updated = safeText(data?.lastUpdated).trim() || new Date().toISOString().slice(0, 10);
+        el("last-updated").textContent = `Last updated: ${updated}`;
+      }
+
+      main();
+    </script>
+  </body>
+</html>
+
