@@ -246,192 +246,52 @@
         .interest { transition: none; }
       }
     </style>
+<style>
+.direction-grid,.output-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.entries{background:white;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.entry{display:grid;grid-template-columns:165px minmax(0,1fr);gap:25px;padding:23px 28px;border-bottom:1px solid var(--line)}
+.entry:last-child{border-bottom:0}.entry time{color:var(--blue-700);font-size:13px}.entry h3{font-size:16px;line-height:1.5;margin:0;color:var(--navy-900)}.entry p{margin:5px 0 0;font-size:14px;color:var(--muted)}.entry .award-result{color:var(--blue-700);font-weight:600}
+.subheading{margin:35px 0 18px;color:var(--navy-900)}
+.project-meta{position:relative;z-index:1;color:var(--blue-700);font-size:12px;margin:0 0 15px;line-height:1.7}
+.membership-list{padding:0;list-style:none;margin:16px 0 0}.membership-list li{padding:15px 0;border-bottom:1px solid var(--line)}.membership-list li:last-child{border:0}.membership-list strong{display:block;font-size:14px}.membership-list span{display:block;font-size:13px;color:var(--blue-700);margin-top:5px}
+.fact strong{overflow-wrap:anywhere}a:focus-visible{outline:3px solid var(--blue-500);outline-offset:4px}
+@media(max-width:720px){.direction-grid,.output-grid{grid-template-columns:1fr}.entry{grid-template-columns:1fr;gap:8px;padding:20px}.header-inner{flex-wrap:wrap;padding:13px 0;gap:10px}.site-nav{width:100%;overflow:auto}.site-nav a{display:block;white-space:nowrap}.hero-inner{grid-template-columns:minmax(0,1fr)}}
+</style>
   </head>
   <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="#home" aria-label="Jinmian Li home">
-          <span class="brand-mark">JL</span>
-          <span class="brand-copy"><strong>Jinmian Li</strong><span>Academic Profile</span></span>
-        </a>
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a href="#profile">Profile</a>
-          <a href="#interests">Interests</a>
-          <a href="#directions">Directions</a>
-          <a href="#outputs">Outputs</a>
-          <a href="#recognition">Honors</a>
-          <a href="#cv">CV</a>
-        </nav>
-      </div>
-    </header>
-
-    <section class="hero" id="home">
-      <div class="container hero-inner">
-        <div>
-          <p class="eyebrow">Research · Design · Intelligent Systems</p>
-          <h1>Jinmian Li</h1>
-          <p class="hero-role">Research Assistant / Independent Researcher</p>
-          <p class="hero-affiliation">Shenzhen Polytechnic University · Shenzhen, China</p>
-          <p class="hero-summary">
-            My work connects additive manufacturing, design, robotics, and embodied intelligence,
-            with a focus on intelligent systems that bridge digital models, fabrication processes,
-            and interaction with the physical world.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="mailto:240010076@mail.szpu.edu.cn">Email me</a>
-            <a class="button" href="https://github.com/jinmianlee" target="_blank" rel="noreferrer">GitHub profile</a>
-          </div>
-        </div>
-
-        <aside class="identity-card" aria-label="Academic identity summary">
-          <div class="identity-top">
-            <div class="avatar" aria-label="Jinmian Li initials">JL</div>
-            <div><p class="identity-name">Jinmian Li</p><p class="identity-location">Shenzhen · China</p></div>
-          </div>
-          <div class="identity-rule"></div>
-          <div class="identity-label">Current focus</div>
-          <p class="identity-focus">Intelligent fabrication, robotic systems, and embodied interaction.</p>
-        </aside>
-      </div>
-    </section>
-
-    <main>
-      <div class="container">
-        <section class="section" id="profile">
-          <div class="section-heading">
-            <span class="section-index">01 · Profile</span>
-            <div class="section-title-wrap"><h2 class="section-title">Personal Profile</h2><p class="section-subtitle">Background, current position, and research motivation</p></div>
-          </div>
-          <div class="profile-panel">
-            <div class="profile-copy">
-              <p>
-                I am <strong>Jinmian Li</strong>, a Research Assistant / Independent Researcher at
-                Shenzhen Polytechnic University. My research lies at the intersection of advanced
-                manufacturing and intelligent robotic systems.
-              </p>
-              <p>
-                I am interested in integrating <strong>design-for-manufacturing</strong> with robotic
-                perception, planning, and action, with the goal of enabling fabrication systems that
-                are more adaptive, functional, and responsive to real-world needs.
-              </p>
-              <p>
-                Education, appointments, and a detailed academic biography will be updated after the
-                curriculum vitae is provided.
-              </p>
-            </div>
-            <div class="profile-facts">
-              <div class="fact"><span>Affiliation</span><strong>Shenzhen Polytechnic University</strong></div>
-              <div class="fact"><span>Location</span><strong>Shenzhen, China</strong></div>
-              <div class="fact"><span>Email</span><strong>240010076@mail.szpu.edu.cn</strong></div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="interests">
-          <div class="section-heading">
-            <span class="section-index">02 · Interests</span>
-            <div class="section-title-wrap"><h2 class="section-title">Research Interests</h2><p class="section-subtitle">Topics that define the broader scope of my work</p></div>
-          </div>
-          <div class="interest-grid">
-            <article class="interest"><span class="interest-number">01</span><strong>Additive Manufacturing</strong></article>
-            <article class="interest"><span class="interest-number">02</span><strong>Design for Manufacturing</strong></article>
-            <article class="interest"><span class="interest-number">03</span><strong>Robotics</strong></article>
-            <article class="interest"><span class="interest-number">04</span><strong>Embodied Intelligence</strong></article>
-            <article class="interest"><span class="interest-number">05</span><strong>Human-Centered Systems</strong></article>
-          </div>
-        </section>
-
-        <section class="section" id="directions">
-          <div class="section-heading">
-            <span class="section-index">03 · Directions</span>
-            <div class="section-title-wrap"><h2 class="section-title">Research Directions</h2><p class="section-subtitle">Three connected directions from fabrication to physical intelligence</p></div>
-          </div>
-          <div class="direction-grid">
-            <article class="direction">
-              <div class="direction-visual" aria-hidden="true">
-                <svg viewBox="0 0 520 292">
-                  <defs><linearGradient id="fab" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eaf4fd"/><stop offset="1" stop-color="#a9cfee"/></linearGradient></defs>
-                  <rect width="520" height="292" fill="url(#fab)"/>
-                  <g fill="none" stroke="#18579c" stroke-width="3" opacity=".68"><path d="M90 235h340M120 205h280M150 175h220M180 145h160M210 115h100"/><path d="M90 235L235 78M430 235L285 78"/></g>
-                  <rect x="225" y="41" width="70" height="38" rx="7" fill="#0a2447"/><path d="M248 79h24l-7 24h-10z" fill="#3b8ee0"/><circle cx="260" cy="111" r="6" fill="#2372c3"/>
-                </svg>
-              </div>
-              <div class="direction-body"><span class="direction-tag">Fabrication Systems</span><h3>Intelligent Additive Manufacturing</h3><p>Adaptive design and process workflows for reliable, functional, and efficient fabrication.</p></div>
-            </article>
-
-            <article class="direction">
-              <div class="direction-visual" aria-hidden="true">
-                <svg viewBox="0 0 520 292">
-                  <rect width="520" height="292" fill="#e6f0f9"/>
-                  <g stroke="#0a2447" stroke-width="18" stroke-linecap="round" fill="none"><path d="M92 235l80-74 67 25 66-88 77-48"/></g>
-                  <g fill="#2372c3" stroke="#fff" stroke-width="6"><circle cx="92" cy="235" r="25"/><circle cx="172" cy="161" r="24"/><circle cx="239" cy="186" r="23"/><circle cx="305" cy="98" r="23"/></g>
-                  <path d="M382 50l50 20-27 43-38-18z" fill="#18579c"/>
-                  <g fill="none" stroke="#3b8ee0" stroke-width="2" opacity=".5"><circle cx="420" cy="73" r="38"/><circle cx="420" cy="73" r="60"/></g>
-                </svg>
-              </div>
-              <div class="direction-body"><span class="direction-tag">Robotic Systems</span><h3>Perception, Planning &amp; Action</h3><p>Robotic systems that sense, reason, and act in manufacturing and interaction tasks.</p></div>
-            </article>
-
-            <article class="direction">
-              <div class="direction-visual" aria-hidden="true">
-                <svg viewBox="0 0 520 292">
-                  <rect width="520" height="292" fill="#dbe9f6"/>
-                  <g stroke="#3b8ee0" stroke-width="2" opacity=".42"><path d="M0 240L260 42l260 198M0 72l260 178L520 72M80 0l180 250L440 0"/></g>
-                  <g fill="#fff" stroke="#18579c" stroke-width="4"><circle cx="260" cy="83" r="36"/><rect x="198" y="125" width="124" height="96" rx="30"/></g>
-                  <g fill="#2372c3"><circle cx="246" cy="80" r="5"/><circle cx="274" cy="80" r="5"/><rect x="230" y="160" width="60" height="8" rx="4"/></g>
-                  <g fill="#0a2447"><circle cx="86" cy="218" r="8"/><circle cx="434" cy="218" r="8"/><circle cx="260" cy="254" r="8"/></g>
-                </svg>
-              </div>
-              <div class="direction-body"><span class="direction-tag">Physical Intelligence</span><h3>Embodied Intelligence</h3><p>Agents that learn through embodiment and connect computation with physical-world interaction.</p></div>
-            </article>
-          </div>
-        </section>
-
-        <!-- CV UPDATE: replace the placeholders below with verified outputs from the CV. -->
-        <section class="section" id="outputs">
-          <div class="section-heading">
-            <span class="section-index">04 · Outputs</span>
-            <div class="section-title-wrap"><h2 class="section-title">Research Outputs</h2><p class="section-subtitle">Publications, projects, and other verifiable research contributions</p></div>
-          </div>
-          <div class="output-grid">
-            <article class="output-card"><div class="output-icon">PUB</div><h3>Publications</h3><p>Paper titles, authors, venues, years, DOI/PDF, and code links will be added from the CV.</p><span class="pending">Awaiting CV</span></article>
-            <article class="output-card"><div class="output-icon">PRJ</div><h3>Research Projects</h3><p>Project roles, methods, outcomes, collaborators, and visual materials will be added from the CV.</p><span class="pending">Awaiting CV</span></article>
-            <article class="output-card"><div class="output-icon">OTH</div><h3>Patents &amp; Software</h3><p>Patents, software, datasets, prototypes, or other outputs will be listed when applicable.</p><span class="pending">To be verified</span></article>
-          </div>
-        </section>
-
-        <!-- CV UPDATE: do not publish unverified honors or memberships. -->
-        <section class="section" id="recognition">
-          <div class="section-heading">
-            <span class="section-index">05 · Recognition</span>
-            <div class="section-title-wrap"><h2 class="section-title">Honors &amp; Professional Affiliations</h2><p class="section-subtitle">Awards, distinctions, academic service, and association memberships</p></div>
-          </div>
-          <div class="recognition-grid">
-            <article class="recognition-card">
-              <div class="recognition-head"><span class="recognition-mark">AW</span><h3>Honors &amp; Awards</h3></div>
-              <p>Awards will be listed with their official title, awarding body, and year after CV verification.</p>
-              <div class="entry-placeholder">No unverified award information is published.</div>
-            </article>
-            <article class="recognition-card">
-              <div class="recognition-head"><span class="recognition-mark">PA</span><h3>Professional Affiliations</h3></div>
-              <p>Memberships, committees, academic service, and professional associations will be added from the CV.</p>
-              <div class="entry-placeholder">Examples: association membership, reviewer service, committee roles.</div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section" id="cv">
-          <div class="cv-banner">
-            <div><strong>Curriculum vitae integration is ready.</strong><span>Upload the CV to replace placeholders with verified academic information and add a download link.</span></div>
-            <div class="cv-status">Awaiting CV</div>
-          </div>
-        </section>
-      </div>
-    </main>
-
-    <footer>
-      <div class="container footer-inner"><span>© <span id="year">2026</span> Jinmian Li.</span><span>Academic homepage · Last updated August 2026</span></div>
-    </footer>
-    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-  </body>
-</html>
+<header class="site-header"><div class="container header-inner"><a class="brand" href="#home"><span class="brand-mark">JL</span><span class="brand-copy"><strong>Jinmian Li</strong><span>Academic Profile</span></span></a><nav class="site-nav" aria-label="Primary navigation"><a href="#profile">Profile</a><a href="#interests">Interests</a><a href="#directions">Research</a><a href="#outputs">Projects</a><a href="#experience">Experience</a><a href="#recognition">Awards</a><a href="#affiliations">Affiliations</a></nav></div></header>
+<section class="hero" id="home"><div class="container hero-inner"><div><p class="eyebrow">Robotics · Learning · Manufacturing</p><h1>Jinmian Li</h1><p class="hero-role">Undergraduate · Intelligent Manufacturing Engineering Technology</p><p class="hero-affiliation">Shenzhen Polytechnic University · 2024–Present</p><p class="hero-summary">My research goal is to build reliable robots that generalize to new tasks and learn efficiently—ideally from a single instruction or demonstration.</p><div class="hero-actions"><a class="button primary" href="mailto:240010076@mail.szpu.edu.cn">Email me</a><a class="button" href="https://github.com/jinmianlee" target="_blank" rel="noreferrer">GitHub profile</a></div></div><aside class="identity-card" aria-label="Research focus"><div class="identity-top"><div class="avatar">JL</div><div><p class="identity-name">Jinmian Li</p><p class="identity-location">Shenzhen, China</p></div></div><div class="identity-rule"></div><div class="identity-label">Current interests</div><p class="identity-focus">3D Gaussian Splatting, additive manufacturing, embodied intelligence, and data-efficient robot learning.</p></aside></div></section>
+<main><div class="container">
+<section class="section" id="profile"><div class="section-heading"><span class="section-index">01 · Profile</span><div class="section-title-wrap"><h2 class="section-title">Personal Profile</h2><p class="section-subtitle">Education and research motivation</p></div></div>
+<div class="profile-panel"><div class="profile-copy"><p>I am <strong>Jinmian Li</strong>, an undergraduate in <strong>Intelligent Manufacturing Engineering Technology</strong> at Shenzhen Polytechnic University, where I have been studying since 2024.</p><p>I am interested in robots with strong generalization, reliability, and learning capabilities. My goal is to help robots acquire skills from minimal expert data and carry out tasks through natural-language instructions or demonstrations.</p><p>My coursework includes mathematics, mechanics of materials, mechanical manufacturing, embedded systems, industrial robotics, and intelligent manufacturing equipment.</p></div><div class="profile-facts"><div class="fact"><span>Education · 2024–Present</span><strong>Shenzhen Polytechnic University</strong></div><div class="fact"><span>Program</span><strong>Intelligent Manufacturing Engineering Technology · Undergraduate</strong></div><div class="fact"><span>Email</span><strong><a href="mailto:240010076@mail.szpu.edu.cn">240010076@mail.szpu.edu.cn</a></strong></div></div></div></section>
+<section class="section" id="interests"><div class="section-heading"><span class="section-index">02 · Interests</span><div class="section-title-wrap"><h2 class="section-title">Research Interests</h2><p class="section-subtitle">Learning methods and physical-world applications</p></div></div>
+<div class="interest-grid"><article class="interest"><span class="interest-number">01</span><strong>Machine Learning</strong></article><article class="interest"><span class="interest-number">02</span><strong>Reinforcement Learning</strong></article><article class="interest"><span class="interest-number">03</span><strong>Imitation Learning</strong></article><article class="interest"><span class="interest-number">04</span><strong>Robotics &amp; Humanoids</strong></article><article class="interest"><span class="interest-number">05</span><strong>Embodied &amp; Unmanned Agents</strong></article></div></section>
+<section class="section" id="directions"><div class="section-heading"><span class="section-index">03 · Directions</span><div class="section-title-wrap"><h2 class="section-title">Research Directions</h2><p class="section-subtitle">From 3D representations and manufacturing to efficient robot learning</p></div></div>
+<div class="direction-grid"><article class="direction"><div class="direction-body"><span class="direction-tag">01 · 3D Representation</span><h3>3D Gaussian Splatting</h3><p>Exploring 3DGS for high-precision model generation for 3D printing and world model construction.</p></div></article><article class="direction"><div class="direction-body"><span class="direction-tag">02 · Manufacturing</span><h3>Additive &amp; Subtractive Manufacturing</h3><p>Exploring the integration of additive manufacturing technologies and the development and application of hybrid additive and subtractive processes.</p></div></article><article class="direction"><div class="direction-body"><span class="direction-tag">03 · Embodied Intelligence</span><h3>Vision-Language-Action &amp; World Models</h3><p>Investigating improvements to vision-language-action (VLA) models and world models (WM), and their applications in embodied systems.</p></div></article><article class="direction"><div class="direction-body"><span class="direction-tag">04 · Robot Learning</span><h3>Data-Efficient Learning</h3><p>Studying how robots can acquire skills and achieve operational goals with very little expert data or without expert demonstrations.</p></div></article></div></section>
+<section class="section" id="outputs"><div class="section-heading"><span class="section-index">04 · Outputs</span><div class="section-title-wrap"><h2 class="section-title">Research Outputs &amp; Projects</h2><p class="section-subtitle">Selected hands-on projects</p></div></div>
+<div class="output-grid">
+<article class="output-card"><div class="output-icon">01</div><h3>Instruction-Driven Robotic Manipulation</h3><div class="project-meta">January–February 2026 · Team Lead<br>Tropic of Cancer Hackathon · Embodied Intelligence Track</div><p>Led a team to build an instruction-driven robotic-arm demonstration combining vision-language-action models and language-based control within 48 hours. The project received the track’s Merit Award and Most Popular Award.</p></article>
+<article class="output-card"><div class="output-icon">02</div><h3>Small Quadcopter Drones</h3><div class="project-meta">August 24–28, 2026 · Team Lead<br>IEEE RAS Technology Education Program</div><p>Led a team in quadcopter assembly, simulation, and flight-control tuning, using motion capture and simulation to refine trajectory tracking. The team finished fifth in the real-flight competition.</p></article>
+</div></section>
+<section class="section" id="experience"><div class="section-heading"><span class="section-index">05 · Experience</span><div class="section-title-wrap"><h2 class="section-title">Learning &amp; Visiting Experience</h2><p class="section-subtitle">Courses, research visits, and technical training</p></div></div>
+<div class="entries"><article class="entry"><time>August 24–28, 2026</time><div><h3>IEEE RAS TEP · The Hong Kong Polytechnic University</h3><p>Member · Mentor: Hailong Huang</p><p>Autonomous planning of small multirotor unmanned aerial vehicles.</p></div></article><article class="entry"><time>Summer 2026</time><div><h3>Intelligent Sensing Laboratory · Southern University of Science and Technology</h3><p>Visiting Student · Mentor: Wei Liu</p><p>Embodied intelligence.</p></div></article><article class="entry"><time>Spring 2026</time><div><h3>Southern University of Science and Technology</h3><p>Team Member · Instructor: Academician Jian Lin</p><p>Intelligent Ocean Exploration · Grade A.</p></div></article><article class="entry"><time>Winter 2025</time><div><h3>Southern University of Science and Technology</h3><p>Team Lead · Instructor: Jiaming Bai</p><p>Additive Manufacturing and Design · Grade A.</p></div></article><article class="entry"><time>Spring 2025</time><div><h3>Harbin Institute of Technology, Shenzhen</h3><p>Team Lead · Instructor: Yongchen Lin</p><p>Solid-Propellant Model Rocket Design and Fabrication · Grade A.</p></div></article></div>
+<h3 class="subheading">Internship Experience</h3>
+<div class="entries" id="internship"><article class="entry"><time>July–August 2026</time><div><h3>Bambu Lab</h3><p>Incoming Store Operations Engineer (Summer Intern)</p></div></article></div>
+</section>
+<section class="section" id="recognition"><div class="section-heading"><span class="section-index">06 · Recognition</span><div class="section-title-wrap"><h2 class="section-title">Honors &amp; Awards</h2><p class="section-subtitle">Competition achievements and distinctions</p></div></div>
+<div class="entries"><article class="entry"><time>2026</time><div><h3>IEEE RAS TEP Drone Racing Competition</h3><p class="award-result">5th Place</p></div></article><article class="entry"><time>2026</time><div><h3>Tropic of Cancer Hackathon · Embodied Intelligence Track</h3><p class="award-result">Merit Award &amp; Most Popular Award</p></div></article><article class="entry"><time>2026</time><div><h3>National 3D Digital Innovation Design Competition · Provincial Competition</h3><p class="award-result">Special Prize</p></div></article><article class="entry"><time>2026</time><div><h3>Guangdong Engineering Innovation Training Competition · Innovation Track</h3><p class="award-result">Third Prize</p></div></article><article class="entry"><time>2026</time><div><h3>Advanced Graphics Competition · Campus Round, Lightweight Design and AI Applications Track</h3><p class="award-result">First Prize</p></div></article><article class="entry"><time>2025</time><div><h3>China Robot and Artificial Intelligence Competition · National Final</h3><p class="award-result">Second Prize</p></div></article><article class="entry"><time>2025</time><div><h3>China Universities Aircraft Design and Innovation Competition · Space Rocket Launch and Recovery</h3><p class="award-result">Third Prize</p></div></article></div></section>
+<section class="section" id="affiliations"><div class="section-heading"><span class="section-index">07 · Community</span><div class="section-title-wrap"><h2 class="section-title">Professional Affiliations &amp; Service</h2><p class="section-subtitle">Association memberships, organizational involvement, and volunteering</p></div></div>
+<div class="recognition-grid"><article class="recognition-card"><h3>Professional Memberships</h3><ul class="membership-list">
+<li><strong>IEEE Robotics and Automation Society (IEEE RAS)</strong><span>Student Member</span></li>
+<li><strong>Aircraft Owners and Pilots Association of China (AOPA-China)</strong><span>Member</span></li>
+<li><strong>ASTM</strong><span>Member</span></li>
+<li><strong>Chinese Mechanical Engineering Society (CMES)</strong><span>Student Member</span></li>
+<li><strong>AAAI</strong><span>Student Member</span></li>
+</ul></article><article class="recognition-card"><h3>Organizations &amp; Volunteering</h3><ul class="membership-list">
+<li><strong>Tanyun Model Aircraft Studio</strong><span>Founder · 2025</span></li>
+<li><strong>15th National Games of China · Shenzhen Competition Zone</strong><span>Outstanding Volunteer · 2025</span></li>
+<li><strong>Shenzhen Marathon</strong><span>Outstanding Volunteer · 2026</span></li>
+</ul></article></div></section>
+</div></main>
+<footer><div class="container footer-inner"><span>© 2026 Jinmian Li.</span><span>Last updated September 10, 2026</span></div></footer>
+</body></html>
